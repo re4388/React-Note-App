@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.header {
+  display: flex;
+
+  /* vertical center */
+  align-items: center;
+
+  /* put `Notes` and `Toggle Mode` at two side, so using space-between */
+  justify-content: space-between;
+}
+
+/* a very simple darkMode also update the
+bg=color and h1 */
+.dark-mode {
+  background-color: black;
+}
+
+.dark-mode h1 {
+  color: white;
+}
+
+.container {
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  /*  Min height 100vh means the element should occupy 
+  / the web browser viewport height. */
+  min-height: 100vh;
+}
+
+.notes-list {
+  /* this part is also very very important for this note app */
+
+  /* 
+  
+  Grid 和 透過 grid template 來定義版型的結構，
+  分別由 column 及 row 定義出直排與橫列的格線，內容再依隔線作安排。 
+  
+  grid-template-columns 定義水平方向的空間
+  grid-template-rows 定義垂直方向的空間
+
+  fr 這個單位，這個單位能夠將可用的 剩餘空間 做比例分割，
+  1fr 2fr means，空間將被分割成 1/3、2/3 兩個大小
+
+  repeat means 可以重複隔線
+
+  minmax(min, max):
+  the grid-template-columns can be no narrower than the min value, 
+  but no wider than the max value.
+  */
+
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.note.new {
+  background-color: #67d7cc;
+}
+
+textarea {
+  /* no need ugly border */
+  border: none;
+
+  /* no need to resize control icon at right bottom coner */
+  resize: none;
+  background-color: #67d7cc;
+}
+
+textarea:focus {
+  /* no need this ugly effect.. */
+  outline: none;
+}
+
+.save {
+  background-color: #e1e1e1;
+
+  /* sometimes, border is just make it ugly... */
+  border: none;
+  border-radius: 15px;
+
+  /* up-down and left-right */
+  padding: 5px 10px;
+}
+
+.save:hover {
+  /* make it ligher when hover over */
+  background-color: #ededed;
+
+  /* it's common to add a cursor pointer to something you will click */
+  cursor: pointer;
+}
+
+.note {
+  background-color: #fef68a;
+  border-radius: 10px;
+  padding: 1rem;
+
+  /* this is essential!! to note app!! 
+  kepp each note like poster! */
+  min-height: 170px;
+
+  /* below 3 CSS lines are also essential for note app
+  flex, make it column, and use space-between to 拉開距離 for your input
+  and below data and delete button */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  white-space: pre-wrap;
+}
+
+.note-footer {
+  display: flex;
+
+  /*  對齊交錯軸線中央 */
+  align-items: center;
+
+  /* this make the `date` and `delete icon` separate */
+  justify-content: space-between;
+}
+
+.delete-icon {
+  cursor: pointer;
+}
+
+.search {
+  /* simple use flex and align item to align all inner item vertically */
+  display: flex;
+  align-items: center;
+
+  background-color: rgb(233, 233, 233);
+
+  /* make coner round */
+  border-radius: 10px;
+
+  /* always good to have some padding.. */
+  padding: 5px;
+
+  /* some space to below todo */
+  margin-bottom: 1.5em;
+}
+
+.search input {
+  /* it's good to apply border ugly none....or you want to
+  customize your own border... */
+  border: none;
+
+  background-color: rgb(233, 233, 233);
+
+  width: 100%;
+}
+
+.search input:focus {
+  /* we don't want to have ugly outline when we foucs... */
+  outline: none;
+}
